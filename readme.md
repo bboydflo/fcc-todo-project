@@ -1,4 +1,6 @@
 # fcc-todo-project
+ 
+ > Florin, Lornie, Jan
 
 ## Upgrades
 1. PWA
