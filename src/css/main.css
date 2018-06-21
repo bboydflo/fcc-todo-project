@@ -1,0 +1,20 @@
+#root {
+  margin-top: 25%;
+  padding: 25px;
+  max-width: 60%;
+  margin: auto;
+}
+
+.btn-toolbar {
+  display: flex;
+}
+
+.btn-toolbar label {
+  flex-grow: 1 !important;
+}
+
+.todo-list {
+  border: 1px solid red;
+  height: 120px;
+  margin-bottom: 1rem;
+}
