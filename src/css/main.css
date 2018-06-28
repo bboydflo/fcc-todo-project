@@ -14,7 +14,31 @@
 }
 
 .todo-list {
-  border: 1px solid red;
-  height: 120px;
+  /* border: 1px solid red; */
+  min-height: 100px;
+  height: 100%;
   margin-bottom: 1rem;
 }
+
+/* -------- this demo section -------- */
+
+.todo-item {
+  padding-left: 0;
+  padding-right: 0;
+  /* background-color: red; */
+}
+
+.todo-buttons {
+  float: right;
+}
+
+.todo-text {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.todo-edit, .todo-delete {
+  width: 72.8906px;
+}
+
+/* -------- this demo section -------- */

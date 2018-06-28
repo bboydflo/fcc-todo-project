@@ -15,7 +15,7 @@
 
     <div id="root">
       <div class="card">
-        <div class="card-body">
+        <ul class="card-body">
             <h1 class="text-center">fcc todo's</h1>
             
             <form>
@@ -24,9 +24,18 @@
               </div>
             </form>
 
-            <div class="todo-list">
-
-            </div>
+            <ul class="list-group list-group-flush todo-list">
+              <li class="list-group-item todo-item">
+                <div class="custom-control custom-checkbox todo-text">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">todo item 1</label>
+                </div>
+                <div class="btn-group todo-buttons" role="group">
+                  <button type="button" class="btn btn-primary todo-edit">Edit</button>
+                  <button type="button" class="btn btn-danger todo-delete">Delete</button>
+                </div>
+              </li>
+            </ul>
 
             <div class="btn-group btn-group-toggle btn-toolbar" data-toggle="buttons">
               <label class="btn btn-secondary active">
