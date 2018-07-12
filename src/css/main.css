@@ -15,8 +15,6 @@
 
 .todo-list {
   /* border: 1px solid red; */
-  min-height: 100px;
-  height: 100%;
   margin-bottom: 1rem;
 }
 
@@ -43,6 +41,12 @@
 
 .editable-todo {
   margin-bottom: 0;
+}
+
+.empty-list {
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
 }
 
 /* -------- this demo section -------- */
