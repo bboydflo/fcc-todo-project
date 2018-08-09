@@ -13,7 +13,7 @@ Here you can find some documentation about git commands used in this project
 ### Navigating through git history
 
 In order to see how the project looked like at different points in time one can
-use `git checkout` command like this: `like this`
+use `git checkout` command like this:
 
 ```sh
 $ git checkout 0c51a7e523275a3bac91fc7c952e1ff1701fc359
