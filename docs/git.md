@@ -21,6 +21,6 @@ $ git checkout 0c51a7e523275a3bac91fc7c952e1ff1701fc359
 
 ### Git workflow
 
-We can write about how we keep in sync with each other.
+We can write about how we keep in sync with each other
 
 
