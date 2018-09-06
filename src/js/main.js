@@ -1,39 +1,55 @@
-/**
- * 1. global context or this or window
- */
-// console.log(window);
+class TodoApp {
+  constructor($rootEl) {
+    this.todos = []
+    this.$rootEl = $rootEl
+    this.titleSelector = 'h1'
+    this.newTodoForm = 'form'
+    this.newTodoInputSelector = 'form input'
+  }
 
-/**
- * 2. call a method from window object
- */
-// var secondsPassed = 1;
-// var intervalId = window.setInterval(function() {
-//   console.log('seconds passed', secondsPassed);
-//   secondsPassed = secondsPassed + 1;
-//   if(secondsPassed === 11) {
-//     window.clearInterval(intervalId);
-//   }
-// }, 1000);
+  $getTitle () {
+    return this.$rootEl.find(this.titleSelector)
+  }
 
-/**
- * 3. call a method (setTimeout) from window object
- */
-// window.setTimeout(function(){
-//   console.log('hello from delayed function')
-// }, 3000);
-// console.log('hello fcc app');
+  $getNewTodoForm () {
+    return this.$rootEl.find(this.newTodoForm)
+  }
 
-// $(document).ready(function() {
-//   console.log('document is ready');
-// });
+  $getNewTodoInput () {
+    return this.$rootEl.find(this.newTodoInputSelector)
+  }
+
+  changeTitle (newTitle) {
+    let $title = this.$getTitle()
+    $title.text(newTitle)
+  }
+
+  addNewTodo (newTodo) {
+    this.todos.push(newTodo)
+  }
+}
+
+
+const onLoad = () => {
+  let $todoItem1 = $('[data-item="todo1"]')
+  let todoApp = new TodoApp($todoItem1)
+
+  let $todoForm = todoApp.$getNewTodoForm()
+  $todoForm.on('submit', (ev) => {
+
+    // prevent the default behaviour
+    ev.preventDefault()
+
+    // get the actual input value (this refers to the global object -> window)
+    let $inputValue = todoApp.$getNewTodoInput().val()
+
+    // save it into the todo items list
+    todoApp.addNewTodo($inputValue)
+
+    console.log(todoApp.todos)
+  })
+}
 
 // jquery on load function -> page has been loaded
 // https://learn.jquery.com/using-jquery-core/document-ready/
-$(function onPageLoad() {
-
-  // here we will put all our code
-
-
-
-
-});
+$(onLoad);
