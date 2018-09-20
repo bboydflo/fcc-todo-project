@@ -45,6 +45,26 @@ class TodoApp {
   $getCloseButton() {
     return this.$rootEl.find(this.closeSelector)
   }
+
+  render() {
+    if (this.todos.length === 0) {
+      this.$rootEl.find('.todo-list').html(
+        `<div class="empty-list">
+          please add some todo's
+        </div>`
+      )
+    } else {
+      let htmlString = ''
+      this.todos.forEach((todo, index) => {
+        let itemString = `<div class="custom-control custom-checkbox todo-text">
+          <input type="checkbox" class="custom-control-input" id="customCheck${index}">
+          <label class="custom-control-label" for="customCheck${index}">${todo}</label>
+        </div>`
+        htmlString = htmlString + itemString
+      })
+      this.$rootEl.find('.todo-list').html(htmlString)
+    }
+  }
 }
 
 const onLoad = () => {
@@ -72,25 +92,31 @@ const onLoad = () => {
 
     if ($inputValue.length > 4) {
 
-      // save it into the todo items list
-      todoApp1.addNewTodo($inputValue)
-
       // clear the input field
       $inputField.val('')
 
       // hide the alert box
       $alertBox1.removeClass('show').addClass('d-none')
+
+      // save it into the todo items list
+      todoApp1.addNewTodo($inputValue)
+
+      todoApp1.render()
     } else {
 
-      // here we show the alert box
+      // update alert message
       $alertBox1.find('.alert-message').html(
         `<strong>"${$inputValue}"</strong>  is not long enough! (min 4)`
       )
+
+      // here we show the alert box
       $alertBox1.removeClass('d-none').addClass('show')
     }
 
     console.log(todoApp1.getTodos())
   })
+
+  todoApp1.render()
 }
 
 // jquery on load function -> page has been loaded
