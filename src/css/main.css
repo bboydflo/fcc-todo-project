@@ -1,7 +1,6 @@
 #root {
   margin-top: 25%;
   padding: 25px;
-  max-width: 60%;
   margin: auto;
 }
 
@@ -50,3 +49,25 @@
 }
 
 /* -------- this demo section -------- */
+
+/**
+ * if on screen and the width of the screen
+ * is less than 631px make the header-1 color red
+ * @media screen and (max-width: 631px) {
+ *  h1 {
+ *    color: red;
+ *  }
+ * }
+ */
+ /* this are called breakpoints */
+@media screen and (max-width: 631px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #root {
+    max-width: 60%;
+  }
+}
