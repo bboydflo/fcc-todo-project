@@ -1,7 +1,7 @@
 // a class has properties and methods
 class TodoApp {
-  constructor($rootEl) {
-    this.todos = []
+  constructor($rootEl, initialTodos) {
+    this.todos = initialTodos
 
     // saving the refference to the root element
     this.$rootEl = $rootEl
@@ -32,6 +32,12 @@ class TodoApp {
 
   addNewTodo (newTodo) {
     this.todos.push(newTodo)
+
+    // transform todo's array into a string
+    let todosString = JSON.stringify(this.todos)
+
+    // save string into local storage
+    localStorage.setItem('todos', todosString)
   }
 
   getTodos() {
@@ -68,8 +74,20 @@ class TodoApp {
 }
 
 const onLoad = () => {
+
+  // get todos as a string
+  let todosString = localStorage.getItem('todos')
+
+  // nothing inside local storage 'todos'
+  if (!todosString) {
+    todosString = '[]'
+  }
+
+  // change string back to array
+  let localStorageTodos = JSON.parse(todosString)
+
   let $todoItem1 = $('[data-item="todo1"]')
-  let todoApp1 = new TodoApp($todoItem1)
+  let todoApp1 = new TodoApp($todoItem1, localStorageTodos)
 
   let $todoForm1 = todoApp1.$getNewTodoForm()
   let $alertBox1 = todoApp1.$getAlertBox()
