@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="src/css/main.css">
 
     <title>FccTodo</title>
+
+    <!-- firebase integration -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script> -->
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-database.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC76nSpYoSG1JKUlmOmcHFU17TyFrb_Yj8",
+        authDomain: "fcc-todo-project.firebaseapp.com",
+        databaseURL: "https://fcc-todo-project.firebaseio.com",
+        projectId: "fcc-todo-project",
+        storageBucket: "fcc-todo-project.appspot.com",
+        messagingSenderId: "989312702341"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <body>
 

@@ -1,0 +1,30 @@
+{
+  "name": "fcc-todo-project",
+  "version": "0.0.1",
+  "description": "free code camp vejle todo project",
+  "main": "src/js/main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "firebase serve --project fcc-todo-project"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bboydflo/fcc-todo-project.git"
+  },
+  "keywords": [
+    "freecodecamp",
+    "vejle"
+  ],
+  "author": "Florin Cosmin Onciu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bboydflo/fcc-todo-project/issues"
+  },
+  "homepage": "https://github.com/bboydflo/fcc-todo-project#readme",
+  "devDependencies": {
+    "firebase-tools": "^6.1.1",
+    "http-server": "^0.11.1"
+  }
+}
