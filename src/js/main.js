@@ -11,6 +11,25 @@ class TodoApp {
     this.newTodoInputSelector = 'form input'
     this.alertBoxSelector = '.alert'
     this.closeSelector = '.close'
+
+    // setup event listener
+    this.$rootEl.on('change', '.custom-control-input', (ev) => {
+      // ev.stopPropagation();
+
+      let status = $(ev.currentTarget).prop('checked')
+
+      // transform from string to a number
+      let index = parseInt($(ev.currentTarget).attr('id').replace(/customCheck/, ''), 10)
+
+      // update todo's
+      this.todos[index].status = status
+
+      console.log(this.todos)
+      this.persistToLocalStorage()
+
+      // rerendering our todolist
+      this.render()
+    })
   }
 
   $getTitle () {
@@ -31,13 +50,12 @@ class TodoApp {
   }
 
   addNewTodo (newTodo) {
-    this.todos.push(newTodo)
+    this.todos.push({
+      status: false,
+      value: newTodo
+    })
 
-    // transform todo's array into a string
-    let todosString = JSON.stringify(this.todos)
-
-    // save string into local storage
-    localStorage.setItem('todos', todosString)
+    this.persistToLocalStorage()
   }
 
   getTodos() {
@@ -62,14 +80,24 @@ class TodoApp {
     } else {
       let htmlString = ''
       this.todos.forEach((todo, index) => {
-        let itemString = `<div class="custom-control custom-checkbox todo-text">
-          <input type="checkbox" class="custom-control-input" id="customCheck${index}">
-          <label class="custom-control-label" for="customCheck${index}">${todo}</label>
+        let itemString = `<div class="custom-control custom-checkbox todo-text" data-index=${index}>
+          <input type="checkbox" ${todo.status ? 'checked' : ''} class="custom-control-input" id="customCheck${index}">
+          <label class="custom-control-label" for="customCheck${index}">
+          ${todo.status ? '<s>' + todo.value + '</s>' : todo.value}
+          </label>
         </div>`
         htmlString = htmlString + itemString
       })
       this.$rootEl.find('.todo-list').html(htmlString)
     }
+  }
+
+  persistToLocalStorage() {
+    // transform todo's array into a string
+    let todosString = JSON.stringify(this.todos)
+
+    // save string into local storage
+    localStorage.setItem('todos', todosString)
   }
 }
 
@@ -85,6 +113,7 @@ const onLoad = () => {
 
   // change string back to array
   let localStorageTodos = JSON.parse(todosString)
+  console.log(localStorageTodos)
 
   let $todoItem1 = $('[data-item="todo1"]')
   let todoApp1 = new TodoApp($todoItem1, localStorageTodos)
